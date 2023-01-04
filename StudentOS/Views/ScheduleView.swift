@@ -1,85 +1,92 @@
-//
-//  Created by Evhen Gruzinov on 25.11.2022.
-//
-
 import SwiftUI
 
 struct ScheduleView: View {
-    var semester: Semester
-    var courses: [Course]
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Environment(\.colorScheme) var colorScheme
+    var backgroundColor: CGColor {
+        if colorScheme == .dark { return CGColor(red: 0, green: 0, blue: 0, alpha: 1) }
+        else { return CGColor(red: 1, green: 1, blue: 1, alpha: 1) }
+    }
+    let semester: Semester
+    let courses: [Course]
+    @State var sortedCourses: Dictionary<Int, Course>? = nil
     @State var sortedSchedule: Dictionary<Int, Array<ScheduleItem>>? = nil
     
     var body: some View {
-        ScrollView {
-            ForEach(0..<7, id: \.self) { day in
-                let generatedDate = nowWeekDay(offset: day)
-//                let rawDate = generatedDate[0] as! Date
-                let formattedDate = generatedDate[1] as! String
-                let formattedWeek = generatedDate[2] as! String
-                VStack {
-                    HStack {
-                        Text(formattedDate).font(.title).bold()
-                        VStack {
-                            Divider()
-                            HStack {
-                                Text(formattedWeek).bold()
-                                Spacer()
-                            }
-                        }
-                        Spacer()
-                    }.padding(.top, 50)
+        ZStack {
+            Color(backgroundColor)
+            ScrollView {
+                ForEach(0..<7, id: \.self) { day in
+                    let formattedWeek = formatWeek(offset: day)
                     VStack {
-                        
-                        if let sortedSchedule = sortedSchedule, let sortedScheduleDay = sortedSchedule[day] {
-                            ForEach(sortedScheduleDay, id: \.self) { item in
-                                HStack {
-                                    Text("\(item.course_id)")
+                        HStack {
+                            Text(formattedWeek).font(.title2).bold()
+                            VStack {
+                                Divider()
+                            }
+                            Spacer()
+                        }
+                        VStack {
+                            if let sortedSchedule = sortedSchedule, let sortedCourses = sortedCourses, let sortedScheduleDay = sortedSchedule[day] {
+                                ForEach(sortedScheduleDay, id: \.self) { item in
+                                    if let course = sortedCourses[item.course_id] {
+                                        HStack {
+                                            Text("\(item.time)").bold()
+                                            Text("\(course.title)")
+                                            Spacer()
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
-                }
+                            .padding(.bottom, 40)
+                }.padding(25)
             }
-        }
-        .navigationTitle("Schedule")
-        .padding(50)
-        .onAppear {
-            sortedSchedule = sortSchedule(scheduleItems: semester.scheduleItems)
+                    .navigationTitle("Schedule")
+                    #if !os(macOS)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarItems(leading: Button(action: {
+                        mode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "line.3.horizontal")
+                    })
+                    #endif
+
+                    .onAppear {
+                        sortedSchedule = sortSchedule(scheduleItems: semester.scheduleItems)
+                        sortedCourses = sortCourses(courses: courses)
+                    }
         }
     }
 }
 
-func nowWeekDay(offset: Int) -> Array<Any> {
+private func formatWeek(offset: Int) -> String {
     var calendar = Calendar.current
     calendar.firstWeekday = 2
     var dateComponent = DateComponents()
     dateComponent.day = offset
 
     let firstDay = calendar.date(from: calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date()))
-    guard let firstDay = firstDay else {return ["error"]}
-    
+    guard let firstDay = firstDay else {return "error"}
     let nowDay = calendar.date(byAdding: dateComponent, to: firstDay)
-    guard let nowDay = nowDay else {return ["error"]}
-    
-    let formatterDate = DateFormatter()
-    formatterDate.dateFormat = "d MMM"
+    guard let nowDay = nowDay else {return "error"}
     
     let formattedWeek = DateFormatter()
     formattedWeek.dateFormat = "EEEE"
     
-    return [
-        nowDay,
-        formatterDate.string(from: nowDay),
-        formattedWeek.string(from: nowDay)
-    ]
+    return formattedWeek.string(from: nowDay)
 }
 
-func sortSchedule(scheduleItems: [ScheduleItem]) -> Dictionary<Int, Array<ScheduleItem>> {
+private func sortSchedule(scheduleItems: [ScheduleItem]) -> Dictionary<Int, Array<ScheduleItem>> {
     var calendar = Calendar.current
     calendar.firstWeekday = 2
 
     let firstDay = calendar.date(from: calendar.dateComponents([.weekOfYear, .yearForWeekOfYear], from: Date()))!
     
+    var tempSchedule: Dictionary<Int, Array<ScheduleItem>> = [
+        0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []
+    ]
     var returnSchedule: Dictionary<Int, Array<ScheduleItem>> = [
         0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []
     ]
@@ -108,8 +115,28 @@ func sortSchedule(scheduleItems: [ScheduleItem]) -> Dictionary<Int, Array<Schedu
         let nowDayTime = calendar.date(byAdding: dateComponent, to: firstDay)
 
         appendingItem.timeDate = nowDayTime
-        returnSchedule[offset]! += [appendingItem]
+        tempSchedule[offset]! += [appendingItem]
     }
-    
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    for item in tempSchedule {
+        let key = item.key
+        let value = item.value
+        let newValue = value
+                .map {  ($0, dateFormatter.date(from: $0.time)!) }
+                .sorted { $0.1 < $1.1 }
+                .map(\.0)
+        returnSchedule[key]! += newValue
+    }
+
     return returnSchedule
+}
+
+private func sortCourses(courses: [Course]) -> Dictionary<Int, Course>? {
+    var returnCourses: Dictionary<Int, Course> = [:]
+    for course in courses {
+        returnCourses[course.id] = course
+    }
+    return returnCourses
 }

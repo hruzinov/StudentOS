@@ -1,7 +1,3 @@
-//
-//  Created by Evhen Gruzinov on 24.11.2022.
-//
-
 import SwiftUI
 
 struct Launch_Screen: View {

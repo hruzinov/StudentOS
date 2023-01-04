@@ -1,7 +1,3 @@
-//
-//  Created by Evhen Gruzinov on 23.11.2022.
-//
-
 import SwiftUI
 
 struct CoursesView: View {
@@ -23,23 +19,22 @@ struct CoursesView: View {
     ]
     
     var body: some View {
-            ZStack {
-                Color(backgroundColor)
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(courses, id: \.id) { course in
-                            CourseInfoBlockView(course: course)
-                        }
+        ZStack {
+            Color(backgroundColor)
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(courses, id: \.id) { course in
+                        CourseInfoBlockView(course: course)
                     }
-                    .padding()
-                }.padding(.top)
+                }.padding()
+            }.padding(.top)
             .navigationTitle("Courses")
             #if !os(macOS)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: Button(action : {
-                self.mode.wrappedValue.dismiss()
+                mode.wrappedValue.dismiss()
             }){
-                Image(systemName: "list.bullet")
+                Image(systemName: "line.3.horizontal")
             })
             #endif
         }
