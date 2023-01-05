@@ -51,6 +51,9 @@ struct ScheduleView: View {
                     }) {
                         Image(systemName: "line.3.horizontal")
                     })
+                    .onBackSwipe {
+                        mode.wrappedValue.dismiss()
+                    }
                     #endif
 
                     .onAppear {

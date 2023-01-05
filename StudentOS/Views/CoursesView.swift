@@ -3,7 +3,12 @@ import SwiftUI
 struct CoursesView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
+    var courses: [Course]
+    let columns = [
+        GridItem(.adaptive(minimum: 350))
+    ]
+    @State var showAddCourseScreen = false
+
     #if os(macOS)
     var lightBG = CGColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
     #else
@@ -13,10 +18,6 @@ struct CoursesView: View {
         if colorScheme == .dark { return CGColor(red: 0, green: 0, blue: 0, alpha: 1) }
         else { return lightBG }
     }
-    var courses: [Course]
-    let columns = [
-        GridItem(.adaptive(minimum: 350))
-    ]
     
     var body: some View {
         ZStack {
@@ -26,6 +27,17 @@ struct CoursesView: View {
                     ForEach(courses, id: \.id) { course in
                         CourseInfoBlockView(course: course)
                     }
+                    #if os(macOS)
+                    Button(action: {
+                        showAddCourseScreen.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $showAddCourseScreen) {
+                        AddCourseView()
+                    }
+                    // TODO: Make add course button for macOS with normal screen
+                    #endif
                 }.padding()
             }.padding(.top)
             .navigationTitle("Courses")
@@ -35,7 +47,18 @@ struct CoursesView: View {
                 mode.wrappedValue.dismiss()
             }){
                 Image(systemName: "line.3.horizontal")
-            })
+            }, trailing: Button(action: {
+                showAddCourseScreen.toggle()
+            }) {
+                Image(systemName: "plus")
+            }
+                .sheet(isPresented: $showAddCourseScreen) {
+                    AddCourseView()
+                }
+            )
+            .onBackSwipe {
+                mode.wrappedValue.dismiss()
+            }
             #endif
         }
     }

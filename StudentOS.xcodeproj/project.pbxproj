@@ -19,6 +19,7 @@
 		496899B129360BEF0012B6D7 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496899A529360BEE0012B6D7 /* ScheduleView.swift */; };
 		496899B229360BEF0012B6D7 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496899A629360BEE0012B6D7 /* SidebarView.swift */; };
 		496899B329360BEF0012B6D7 /* Launch Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496899A729360BEE0012B6D7 /* Launch Screen.swift */; };
+		49DEE7552966D6DA00759968 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE7542966D6DA00759968 /* AddCourseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		496899A529360BEE0012B6D7 /* ScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		496899A629360BEE0012B6D7 /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		496899A729360BEE0012B6D7 /* Launch Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Launch Screen.swift"; sourceTree = "<group>"; };
+		49DEE7542966D6DA00759968 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				496899A529360BEE0012B6D7 /* ScheduleView.swift */,
 				496899A629360BEE0012B6D7 /* SidebarView.swift */,
 				496899A729360BEE0012B6D7 /* Launch Screen.swift */,
+				49DEE7542966D6DA00759968 /* AddCourseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496899AE29360BEF0012B6D7 /* StudentOSApp.swift in Sources */,
+				49DEE7552966D6DA00759968 /* AddCourseView.swift in Sources */,
 				496899AC29360BEF0012B6D7 /* Course.swift in Sources */,
 				496899AD29360BEF0012B6D7 /* Theme.swift in Sources */,
 				496899B329360BEF0012B6D7 /* Launch Screen.swift in Sources */,
