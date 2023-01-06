@@ -3,7 +3,7 @@ import SwiftUI
 struct CoursesView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    var courses: [Course]
+    @State var courses: [Course]
     let columns = [
         GridItem(.adaptive(minimum: 350))
     ]
@@ -34,7 +34,7 @@ struct CoursesView: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $showAddCourseScreen) {
-                        AddCourseView()
+                        AddCourseView(courses: $courses)
                     }
                     // TODO: Make add course button for macOS with normal screen
                     #endif
@@ -53,7 +53,7 @@ struct CoursesView: View {
                 Image(systemName: "plus")
             }
                 .sheet(isPresented: $showAddCourseScreen) {
-                    AddCourseView()
+                    AddCourseView(courses: $courses)
                 }
             )
             .onBackSwipe {
