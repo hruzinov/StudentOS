@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49502BDF296C0E57000551B0 /* CalendarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49502BDE296C0E57000551B0 /* CalendarFunctions.swift */; };
 		496899A829360BEF0012B6D7 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968999829360BEE0012B6D7 /* TestData.swift */; };
 		496899A929360BEF0012B6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4968999929360BEE0012B6D7 /* Assets.xcassets */; };
 		496899AA29360BEF0012B6D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4968999B29360BEE0012B6D7 /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49502BDE296C0E57000551B0 /* CalendarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFunctions.swift; sourceTree = "<group>"; };
 		4968997829360ACA0012B6D7 /* StudentOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4968999729360BEE0012B6D7 /* StudentOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = StudentOS.entitlements; sourceTree = "<group>"; };
 		4968999829360BEE0012B6D7 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49502BDD296C0E31000551B0 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				49502BDE296C0E57000551B0 /* CalendarFunctions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		4968996F29360ACA0012B6D7 = {
 			isa = PBXGroup;
 			children = (
@@ -70,10 +80,11 @@
 		4968999529360BEE0012B6D7 /* StudentOS */ = {
 			isa = PBXGroup;
 			children = (
-				496899A129360BEE0012B6D7 /* Views */,
+				496899A029360BEE0012B6D7 /* StudentOSApp.swift */,
+				49502BDD296C0E31000551B0 /* Functions */,
 				4968999C29360BEE0012B6D7 /* Models */,
 				4968999629360BEE0012B6D7 /* Other */,
-				496899A029360BEE0012B6D7 /* StudentOSApp.swift */,
+				496899A129360BEE0012B6D7 /* Views */,
 			);
 			path = StudentOS;
 			sourceTree = "<group>";
@@ -100,8 +111,8 @@
 		4968999C29360BEE0012B6D7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4968999D29360BEE0012B6D7 /* Schedule.swift */,
 				4968999E29360BEE0012B6D7 /* Course.swift */,
+				4968999D29360BEE0012B6D7 /* Schedule.swift */,
 				4968999F29360BEE0012B6D7 /* Theme.swift */,
 			);
 			path = Models;
@@ -111,11 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				496899A229360BEE0012B6D7 /* Blocks */,
+				49DEE7542966D6DA00759968 /* AddCourseView.swift */,
 				496899A429360BEE0012B6D7 /* CoursesView.swift */,
+				496899A729360BEE0012B6D7 /* Launch Screen.swift */,
 				496899A529360BEE0012B6D7 /* ScheduleView.swift */,
 				496899A629360BEE0012B6D7 /* SidebarView.swift */,
-				496899A729360BEE0012B6D7 /* Launch Screen.swift */,
-				49DEE7542966D6DA00759968 /* AddCourseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +214,7 @@
 				496899AC29360BEF0012B6D7 /* Course.swift in Sources */,
 				496899AD29360BEF0012B6D7 /* Theme.swift in Sources */,
 				496899B329360BEF0012B6D7 /* Launch Screen.swift in Sources */,
+				49502BDF296C0E57000551B0 /* CalendarFunctions.swift in Sources */,
 				496899AF29360BEF0012B6D7 /* CourseInfoBlockView.swift in Sources */,
 				496899AB29360BEF0012B6D7 /* Schedule.swift in Sources */,
 				496899B229360BEF0012B6D7 /* SidebarView.swift in Sources */,

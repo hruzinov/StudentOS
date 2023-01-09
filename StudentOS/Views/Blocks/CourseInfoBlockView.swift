@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CourseInfoBlockView: View {
     @Environment(\.colorScheme) var colorScheme
+    var deleteFunction: (Int) -> Void
     var backgroundColor: Color {
         if colorScheme == .light { return Color.white } else { return Color(red: 36/255, green: 36/255, blue: 36/255) }
     }
@@ -11,25 +12,31 @@ struct CourseInfoBlockView: View {
     }
     var course: Course
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text(course.title)
                     .font(.title3).bold()
                 Text(course.professor)
-//                HStack {
-//                    ForEach(course.schedule) { schedule in
-//                        Text("\(schedule.day.shortName) *\(schedule.time)*")
-//                            .padding([.leading,.trailing], 3)
-//                            .padding([.top,.bottom], 2)
-//                            .background(schedule.day.theme.mainColor)
-//                            .foregroundColor(schedule.day.theme.accentColor)
-//                            .cornerRadius(5)
-//                    }
-//                }
                 Text("**Tasks:** 1234").padding(.top, 1)
             }
             Spacer()
-            Image(systemName: "arrow.right.circle").font(.title2)
+            Menu {
+                Menu {
+                    if #available(iOS 15.0, macOS 12.0, *) {
+                        Button("Confirm", role: .destructive) {
+                            self.deleteFunction(course.id)
+                        }
+                    } else {
+                        Button("Confirm") {
+                            self.deleteFunction(course.id)
+                        }
+                    }
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle").font(.title2)
+            }
         }
         .padding()
         .background(backgroundColor)
@@ -43,7 +50,7 @@ struct CourseInfoBlockView: View {
 
 struct CourseInfoBlockView_Previews: PreviewProvider {
     static var previews: some View {
-        CourseInfoBlockView(course: TestData().courses[0])
+        CourseInfoBlockView(deleteFunction: {_ in }, course: TestData().courses[0])
             .previewLayout(.fixed(width: 400, height: 400))
     }
 }

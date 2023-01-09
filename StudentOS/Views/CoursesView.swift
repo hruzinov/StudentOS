@@ -25,7 +25,8 @@ struct CoursesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(courses, id: \.id) { course in
-                        CourseInfoBlockView(course: course)
+                        CourseInfoBlockView(deleteFunction: deleteCourse, course: course)
+                            .transition(.scale)
                     }
                     #if os(macOS)
                     Button(action: {
@@ -62,6 +63,13 @@ struct CoursesView: View {
             #endif
         }
     }
+    
+    func deleteCourse(courseId: Int) {
+        withAnimation {
+            self.courses = self.courses.filter{$0.id != courseId}
+        }
+    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
