@@ -8,6 +8,8 @@ struct CoursesView: View {
         GridItem(.adaptive(minimum: 350))
     ]
     @State var showAddCourseScreen = false
+    @State var showEditCourseScreen = false
+    @State var editId: Int?
 
     #if os(macOS)
     var lightBG = CGColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
@@ -25,7 +27,7 @@ struct CoursesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(courses, id: \.id) { course in
-                        CourseInfoBlockView(deleteFunction: deleteCourse, course: course)
+                        CourseInfoBlockView(editFunction: editCourse, deleteFunction: deleteCourse, course: course)
                             .transition(.scale)
                     }
                     #if os(macOS)
@@ -35,7 +37,7 @@ struct CoursesView: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $showAddCourseScreen) {
-                        AddCourseView(courses: $courses)
+                        AddCourseView(courses: $courses, editMode: .edit)
                     }
                     // TODO: Make add course button for macOS with normal screen
                     #endif
@@ -54,14 +56,21 @@ struct CoursesView: View {
                 Image(systemName: "plus")
             }
                 .sheet(isPresented: $showAddCourseScreen) {
-                    AddCourseView(courses: $courses)
+                    AddCourseView(courses: $courses, editMode: .create)
                 }
             )
             .onBackSwipe {
                 mode.wrappedValue.dismiss()
             }
             #endif
+        }.sheet(isPresented: $showEditCourseScreen) {
+            AddCourseView(courses: $courses, editMode: .edit, editId: editId)
         }
+    }
+    
+    func editCourse(courseId: Int) {
+        self.editId = courseId
+        self.showEditCourseScreen.toggle()
     }
     
     func deleteCourse(courseId: Int) {

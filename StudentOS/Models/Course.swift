@@ -2,6 +2,8 @@ import Foundation
 
 struct Course {
     let id: Int
-    let title: String
-    let professor: String
+    var title: String
+    var professor: String
 }
+
+enum EditModeTypes {case edit, create}

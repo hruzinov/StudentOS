@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CourseInfoBlockView: View {
     @Environment(\.colorScheme) var colorScheme
+    var editFunction: (Int) -> Void
     var deleteFunction: (Int) -> Void
     var backgroundColor: Color {
         if colorScheme == .light { return Color.white } else { return Color(red: 36/255, green: 36/255, blue: 36/255) }
@@ -21,6 +22,12 @@ struct CourseInfoBlockView: View {
             }
             Spacer()
             Menu {
+                Button {
+                    self.editFunction(course.id)
+                } label: {
+                    Label("Edit", systemImage: "trash")
+                }
+
                 Menu {
                     if #available(iOS 15.0, macOS 12.0, *) {
                         Button("Confirm", role: .destructive) {
@@ -48,9 +55,9 @@ struct CourseInfoBlockView: View {
     }
 }
 
-struct CourseInfoBlockView_Previews: PreviewProvider {
-    static var previews: some View {
-        CourseInfoBlockView(deleteFunction: {_ in }, course: TestData().courses[0])
-            .previewLayout(.fixed(width: 400, height: 400))
-    }
-}
+//struct CourseInfoBlockView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CourseInfoBlockView(deleteFunction: {_ in }, course: TestData().courses[0])
+//            .previewLayout(.fixed(width: 400, height: 400))
+//    }
+//}
