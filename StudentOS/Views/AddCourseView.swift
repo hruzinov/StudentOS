@@ -12,7 +12,7 @@ struct AddCourseView: View {
    
     var body: some View {
         List {
-            Section(header: Text("Coruse details")) {
+            Section(header: Text("Course details")) {
                 HStack {
                     Text("Course title: ")
                     TextField("Math", text: $courseTitle)
@@ -46,7 +46,6 @@ struct AddCourseView: View {
                     Divider()
                     Spacer()
                     Button("Save") {
-                        print(editMode)
                         courses = saveCourse(editMode: editMode, editIdIndex: editIdIndex, courses: courses, courseTitle: courseTitle, courseProfessor: courseProfessor)
                         mode.wrappedValue.dismiss()
                     }.disabled(addButtonDisabled)
@@ -54,7 +53,9 @@ struct AddCourseView: View {
                 }
             }
         }.onAppear {
+                    print(editId)
             if editMode == .edit, let editId = editId {
+                print("Edit")
                 for (index, course) in courses.enumerated() {
                     if editId == course.id {
                         print(courses[index].title)
@@ -69,15 +70,11 @@ struct AddCourseView: View {
 }
 
 private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Course], courseTitle: String, courseProfessor: String) -> [Course] {
-    
-    print("test 1")
-//    print(editMode)
     var courses = courses
     var saveCourseId: Int
     switch editMode {
     case .create:
         saveCourseId = 0
-        print("test 2")
         while true {
             saveCourseId += 1
             var courseIdMatch = false
@@ -104,3 +101,4 @@ private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Co
 // TODO: test iOS Edit
 // TODO: test macOS Edit
 // TODO: macOS Edit — pasting old data
+// TODO: iOS – test back swipes

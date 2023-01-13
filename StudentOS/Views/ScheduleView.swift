@@ -18,6 +18,7 @@ struct ScheduleView: View {
             ScrollView {
                 ForEach(0..<7, id: \.self) { day in
                     let formattedWeek = CalendarFunctions().formatWeek(offset: day)
+                    
                     VStack {
                         HStack {
                             Text(formattedWeek).font(.title2).bold()
@@ -49,7 +50,7 @@ struct ScheduleView: View {
                     .navigationBarItems(leading: Button(action: {
                         mode.wrappedValue.dismiss()
                     }) {
-                        Image(systemName: "line.3.horizontal")
+                        Image(systemName: "line.horizontal.3")
                     })
                     .onBackSwipe {
                         mode.wrappedValue.dismiss()
@@ -64,7 +65,7 @@ struct ScheduleView: View {
     }
 }
 
-private func sortCourses(courses: [Course]) -> Dictionary<Int, Course>? {
+private func sortCourses(courses: [Course]) -> Dictionary<Int, Course> {
     var returnCourses: Dictionary<Int, Course> = [:]
     for course in courses {
         returnCourses[course.id] = course

@@ -39,7 +39,7 @@ struct CoursesView: View {
                     .sheet(isPresented: $showAddCourseScreen) {
                         AddCourseView(courses: $courses, editMode: .create)
                     }
-                    // TODO: Make add course button for macOS with normal screen
+                    // TODO: Make add course button for macOS with normal size
                     #endif
                 }.padding()
             }.padding(.top)
@@ -49,7 +49,7 @@ struct CoursesView: View {
             .navigationBarItems(leading: Button(action : {
                 mode.wrappedValue.dismiss()
             }){
-                Image(systemName: "line.3.horizontal")
+                Image(systemName: "line.horizontal.3")
             }, trailing: Button(action: {
                 showAddCourseScreen.toggle()
             }) {
@@ -59,9 +59,9 @@ struct CoursesView: View {
                     AddCourseView(courses: $courses, editMode: .create)
                 }
             )
-            .onBackSwipe {
-                mode.wrappedValue.dismiss()
-            }
+//            .onBackSwipe {
+//                mode.wrappedValue.dismiss()
+//            }
             #endif
         }.sheet(isPresented: $showEditCourseScreen) {
             AddCourseView(courses: $courses, editMode: .edit, editId: editId)
@@ -75,7 +75,7 @@ struct CoursesView: View {
     
     func deleteCourse(courseId: Int) {
         withAnimation {
-            self.courses = self.courses.filter{$0.id != courseId}
+            self.courses = courses.filter{$0.id != courseId}
         }
     }
 
