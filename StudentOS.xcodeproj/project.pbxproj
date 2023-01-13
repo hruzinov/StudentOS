@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492DE68A297134580032DAA9 /* StudentOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DE689297134580032DAA9 /* StudentOSTests.swift */; };
 		49502BDF296C0E57000551B0 /* CalendarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49502BDE296C0E57000551B0 /* CalendarFunctions.swift */; };
 		496899A829360BEF0012B6D7 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968999829360BEE0012B6D7 /* TestData.swift */; };
 		496899A929360BEF0012B6D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4968999929360BEE0012B6D7 /* Assets.xcassets */; };
@@ -23,7 +24,19 @@
 		49DEE7552966D6DA00759968 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE7542966D6DA00759968 /* AddCourseView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		492DE68B297134580032DAA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4968997029360ACA0012B6D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4968997729360ACA0012B6D7;
+			remoteInfo = StudentOS;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		492DE687297134580032DAA9 /* StudentOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		492DE689297134580032DAA9 /* StudentOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOSTests.swift; sourceTree = "<group>"; };
 		49502BDE296C0E57000551B0 /* CalendarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFunctions.swift; sourceTree = "<group>"; };
 		4968997829360ACA0012B6D7 /* StudentOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4968999729360BEE0012B6D7 /* StudentOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = StudentOS.entitlements; sourceTree = "<group>"; };
@@ -43,6 +56,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		492DE684297134580032DAA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4968997529360ACA0012B6D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -53,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492DE688297134580032DAA9 /* StudentOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				492DE689297134580032DAA9 /* StudentOSTests.swift */,
+			);
+			path = StudentOSTests;
+			sourceTree = "<group>";
+		};
 		49502BDD296C0E31000551B0 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4968999529360BEE0012B6D7 /* StudentOS */,
+				492DE688297134580032DAA9 /* StudentOSTests */,
 				4968997929360ACA0012B6D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				4968997829360ACA0012B6D7 /* StudentOS.app */,
+				492DE687297134580032DAA9 /* StudentOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +172,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		492DE686297134580032DAA9 /* StudentOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 492DE68F297134590032DAA9 /* Build configuration list for PBXNativeTarget "StudentOSTests" */;
+			buildPhases = (
+				492DE683297134580032DAA9 /* Sources */,
+				492DE684297134580032DAA9 /* Frameworks */,
+				492DE685297134580032DAA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				492DE68C297134580032DAA9 /* PBXTargetDependency */,
+			);
+			name = StudentOSTests;
+			productName = StudentOSTests;
+			productReference = 492DE687297134580032DAA9 /* StudentOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4968997729360ACA0012B6D7 /* StudentOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4968998729360AD00012B6D7 /* Build configuration list for PBXNativeTarget "StudentOS" */;
@@ -166,9 +214,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					492DE686297134580032DAA9 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 4968997729360ACA0012B6D7;
+					};
 					4968997729360ACA0012B6D7 = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -188,11 +240,19 @@
 			projectRoot = "";
 			targets = (
 				4968997729360ACA0012B6D7 /* StudentOS */,
+				492DE686297134580032DAA9 /* StudentOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		492DE685297134580032DAA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4968997629360ACA0012B6D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,6 +265,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		492DE683297134580032DAA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				492DE68A297134580032DAA9 /* StudentOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4968997429360ACA0012B6D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,7 +294,56 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		492DE68C297134580032DAA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4968997729360ACA0012B6D7 /* StudentOS */;
+			targetProxy = 492DE68B297134580032DAA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		492DE68D297134590032DAA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G4PV26QJD2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruzinov.StudentOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StudentOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StudentOS";
+			};
+			name = Debug;
+		};
+		492DE68E297134590032DAA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G4PV26QJD2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gruzinov.StudentOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StudentOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/StudentOS";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		4968998529360AD00012B6D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -433,6 +550,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		492DE68F297134590032DAA9 /* Build configuration list for PBXNativeTarget "StudentOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				492DE68D297134590032DAA9 /* Debug */,
+				492DE68E297134590032DAA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4968997329360ACA0012B6D7 /* Build configuration list for PBXProject "StudentOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

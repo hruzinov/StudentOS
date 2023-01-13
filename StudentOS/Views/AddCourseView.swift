@@ -46,29 +46,8 @@ struct AddCourseView: View {
                     Divider()
                     Spacer()
                     Button("Save") {
-                        var saveCourseId: Int
-                        switch editMode {
-                        case .create:
-                            saveCourseId = 0
-                
-                            while true {
-                                saveCourseId += 1
-                                var courseIdMatch = false
-                                for course in courses {
-                                    if saveCourseId == course.id { courseIdMatch = true }
-                                }
-                                if !courseIdMatch { break }
-                            }
-                            
-                            let newCourse = Course(id: saveCourseId, title: courseTitle, professor: courseProfessor)
-                            courses.append(newCourse)
-                            
-                        case .edit:
-                            if let editIdIndex = editIdIndex {
-                                courses[editIdIndex].title = courseTitle
-                                courses[editIdIndex].professor = courseProfessor
-                            }
-                        }
+                        print(editMode)
+                        courses = saveCourse(editMode: editMode, editIdIndex: editIdIndex, courses: courses, courseTitle: courseTitle, courseProfessor: courseProfessor)
                         mode.wrappedValue.dismiss()
                     }.disabled(addButtonDisabled)
                     Spacer()
@@ -76,10 +55,8 @@ struct AddCourseView: View {
             }
         }.onAppear {
             if editMode == .edit, let editId = editId {
-                print("hello")
                 for (index, course) in courses.enumerated() {
                     if editId == course.id {
-                        print("hello")
                         print(courses[index].title)
                         editIdIndex = index
                         courseTitle = courses[index].title
@@ -90,3 +67,40 @@ struct AddCourseView: View {
         }
     }
 }
+
+private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Course], courseTitle: String, courseProfessor: String) -> [Course] {
+    
+    print("test 1")
+//    print(editMode)
+    var courses = courses
+    var saveCourseId: Int
+    switch editMode {
+    case .create:
+        saveCourseId = 0
+        print("test 2")
+        while true {
+            saveCourseId += 1
+            var courseIdMatch = false
+            for course in courses {
+                if saveCourseId == course.id { courseIdMatch = true }
+            }
+            if !courseIdMatch { break }
+        }
+        
+        let newCourse = Course(id: saveCourseId, title: courseTitle, professor: courseProfessor)
+        courses.append(newCourse)
+        
+    case .edit:
+        if let editIdIndex = editIdIndex {
+            courses[editIdIndex].title = courseTitle
+            courses[editIdIndex].professor = courseProfessor
+        }
+    }
+    return courses
+}
+
+
+// TODO: test iOS Create
+// TODO: test iOS Edit
+// TODO: test macOS Edit
+// TODO: macOS Edit — pasting old data

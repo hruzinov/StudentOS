@@ -37,7 +37,7 @@ struct CoursesView: View {
                         Image(systemName: "plus")
                     }
                     .sheet(isPresented: $showAddCourseScreen) {
-                        AddCourseView(courses: $courses, editMode: .edit)
+                        AddCourseView(courses: $courses, editMode: .create)
                     }
                     // TODO: Make add course button for macOS with normal screen
                     #endif
