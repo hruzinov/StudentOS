@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28AF0A13C09A194A9AF9ADE8 /* View+DragGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF0E994FEF0495AA036F15 /* View+DragGesture.swift */; };
 		492DE68A297134580032DAA9 /* StudentOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DE689297134580032DAA9 /* StudentOSTests.swift */; };
 		49502BDF296C0E57000551B0 /* CalendarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49502BDE296C0E57000551B0 /* CalendarFunctions.swift */; };
 		496899A829360BEF0012B6D7 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968999829360BEE0012B6D7 /* TestData.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28AF0E994FEF0495AA036F15 /* View+DragGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+DragGesture.swift"; sourceTree = "<group>"; };
 		492DE687297134580032DAA9 /* StudentOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		492DE689297134580032DAA9 /* StudentOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOSTests.swift; sourceTree = "<group>"; };
 		49502BDE296C0E57000551B0 /* CalendarFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarFunctions.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28AF0FB526769A0045F3A65C /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				28AF0E994FEF0495AA036F15 /* View+DragGesture.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
 		492DE688297134580032DAA9 /* StudentOSTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 				4968999C29360BEE0012B6D7 /* Models */,
 				4968999629360BEE0012B6D7 /* Other */,
 				496899A129360BEE0012B6D7 /* Views */,
+				28AF0FB526769A0045F3A65C /* Extentions */,
 			);
 			path = StudentOS;
 			sourceTree = "<group>";
@@ -289,6 +300,7 @@
 				496899B129360BEF0012B6D7 /* ScheduleView.swift in Sources */,
 				496899B029360BEF0012B6D7 /* CoursesView.swift in Sources */,
 				496899A829360BEF0012B6D7 /* TestData.swift in Sources */,
+				28AF0A13C09A194A9AF9ADE8 /* View+DragGesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

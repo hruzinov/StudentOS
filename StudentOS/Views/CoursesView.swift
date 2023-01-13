@@ -59,9 +59,9 @@ struct CoursesView: View {
                     AddCourseView(courses: $courses, editMode: .create)
                 }
             )
-//            .onBackSwipe {
-//                mode.wrappedValue.dismiss()
-//            }
+            .onBackSwipe {
+                mode.wrappedValue.dismiss()
+            }
             #endif
         }.sheet(isPresented: $showEditCourseScreen) {
             AddCourseView(courses: $courses, editMode: .edit, editId: editId)
@@ -75,10 +75,9 @@ struct CoursesView: View {
     
     func deleteCourse(courseId: Int) {
         withAnimation {
-            self.courses = courses.filter{$0.id != courseId}
+            self.courses = self.courses.filter{$0.id != courseId}
         }
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {

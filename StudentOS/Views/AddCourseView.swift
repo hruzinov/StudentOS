@@ -9,7 +9,7 @@ struct AddCourseView: View {
     @Binding var courses: [Course]
     var editMode: EditModeTypes
     var editId: Int?
-   
+
     var body: some View {
         List {
             Section(header: Text("Course details")) {
@@ -53,9 +53,7 @@ struct AddCourseView: View {
                 }
             }
         }.onAppear {
-                    print(editId)
             if editMode == .edit, let editId = editId {
-                print("Edit")
                 for (index, course) in courses.enumerated() {
                     if editId == course.id {
                         print(courses[index].title)
@@ -83,10 +81,10 @@ private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Co
             }
             if !courseIdMatch { break }
         }
-        
+
         let newCourse = Course(id: saveCourseId, title: courseTitle, professor: courseProfessor)
         courses.append(newCourse)
-        
+
     case .edit:
         if let editIdIndex = editIdIndex {
             courses[editIdIndex].title = courseTitle
@@ -95,10 +93,7 @@ private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Co
     }
     return courses
 }
-
-
-// TODO: test iOS Create
 // TODO: test iOS Edit
 // TODO: test macOS Edit
-// TODO: macOS Edit — pasting old data
-// TODO: iOS – test back swipes
+// TODO: Edit — pasting old data
+// TODO: Edits start work normal only after adding courses item(s)
