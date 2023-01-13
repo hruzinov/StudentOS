@@ -7,8 +7,8 @@ struct AddCourseView: View {
     @State var addButtonDisabled = true
     @State var editIdIndex: Int?
     @Binding var courses: [Course]
+    @Binding var editId: Int?
     var editMode: EditModeTypes
-    var editId: Int?
 
     var body: some View {
         List {
@@ -56,7 +56,6 @@ struct AddCourseView: View {
             if editMode == .edit, let editId = editId {
                 for (index, course) in courses.enumerated() {
                     if editId == course.id {
-                        print(courses[index].title)
                         editIdIndex = index
                         courseTitle = courses[index].title
                         courseProfessor = courses[index].professor
@@ -93,7 +92,3 @@ private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Co
     }
     return courses
 }
-// TODO: test iOS Edit
-// TODO: test macOS Edit
-// TODO: Edit — pasting old data
-// TODO: Edits start work normal only after adding courses item(s)

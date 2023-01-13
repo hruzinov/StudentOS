@@ -10,7 +10,7 @@ struct CoursesView: View {
     @State var showAddCourseScreen = false
     @State var showEditCourseScreen = false
     @State var editId: Int?
-
+    
     #if os(macOS)
     var lightBG = CGColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
     #else
@@ -36,9 +36,6 @@ struct CoursesView: View {
                     }) {
                         Image(systemName: "plus")
                     }
-                    .sheet(isPresented: $showAddCourseScreen) {
-                        AddCourseView(courses: $courses, editMode: .create)
-                    }
                     // TODO: Make add course button for macOS with normal size
                     #endif
                 }.padding()
@@ -54,17 +51,16 @@ struct CoursesView: View {
                 showAddCourseScreen.toggle()
             }) {
                 Image(systemName: "plus")
-            }
-                .sheet(isPresented: $showAddCourseScreen) {
-                    AddCourseView(courses: $courses, editMode: .create)
-                }
-            )
+            })
             .onBackSwipe {
                 mode.wrappedValue.dismiss()
             }
             #endif
+        }
+        .sheet(isPresented: $showAddCourseScreen) {
+            AddCourseView(courses: $courses, editId: .constant(0), editMode: .create)
         }.sheet(isPresented: $showEditCourseScreen) {
-            AddCourseView(courses: $courses, editMode: .edit, editId: editId)
+            AddCourseView(courses: $courses, editId: $editId, editMode: .edit)
         }
     }
     
@@ -77,11 +73,5 @@ struct CoursesView: View {
         withAnimation {
             self.courses = self.courses.filter{$0.id != courseId}
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        CoursesView(courses: TestData().courses)
     }
 }

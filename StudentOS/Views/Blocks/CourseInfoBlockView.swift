@@ -25,7 +25,7 @@ struct CourseInfoBlockView: View {
                 Button {
                     self.editFunction(course.id)
                 } label: {
-                    Label("Edit", systemImage: "trash")
+                    Label("Edit", systemImage: "pencil")
                 }
 
                 Menu {
@@ -54,10 +54,3 @@ struct CourseInfoBlockView: View {
         )
     }
 }
-
-//struct CourseInfoBlockView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CourseInfoBlockView(deleteFunction: {_ in }, course: TestData().courses[0])
-//            .previewLayout(.fixed(width: 400, height: 400))
-//    }
-//}
