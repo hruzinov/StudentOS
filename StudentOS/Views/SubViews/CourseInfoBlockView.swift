@@ -23,7 +23,7 @@ struct CourseInfoBlockView: View {
             Spacer()
             Menu {
                 Button {
-                    self.editFunction(course.id)
+                    editFunction(course.id)
                 } label: {
                     Label("Edit", systemImage: "pencil")
                 }
@@ -31,11 +31,11 @@ struct CourseInfoBlockView: View {
                 Menu {
                     if #available(iOS 15.0, macOS 12.0, *) {
                         Button("Confirm", role: .destructive) {
-                            self.deleteFunction(course.id)
+                            deleteFunction(course.id)
                         }
                     } else {
                         Button("Confirm") {
-                            self.deleteFunction(course.id)
+                            deleteFunction(course.id)
                         }
                     }
                 } label: {

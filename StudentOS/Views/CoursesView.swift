@@ -9,7 +9,7 @@ struct CoursesView: View {
     ]
     @State var showAddCourseScreen = false
     @State var showEditCourseScreen = false
-    @State var editId: Int?
+    @State var courseEditId: Int?
     
     #if os(macOS)
     var lightBG = CGColor(red: 235/255, green: 235/255, blue: 235/255, alpha: 1)
@@ -36,7 +36,6 @@ struct CoursesView: View {
                     }) {
                         Image(systemName: "plus")
                     }
-                    // TODO: Make add course button for macOS with normal size
                     #endif
                 }.padding()
             }.padding(.top)
@@ -58,20 +57,20 @@ struct CoursesView: View {
             #endif
         }
         .sheet(isPresented: $showAddCourseScreen) {
-            AddCourseView(courses: $courses, editId: .constant(0), editMode: .create)
+            ChangeCourseView(courses: $courses, courseEditId: .constant(0), changeMode: .create)
         }.sheet(isPresented: $showEditCourseScreen) {
-            AddCourseView(courses: $courses, editId: $editId, editMode: .edit)
+            ChangeCourseView(courses: $courses, courseEditId: $courseEditId, changeMode: .edit)
         }
     }
     
     func editCourse(courseId: Int) {
-        self.editId = courseId
+        self.courseEditId = courseId
         self.showEditCourseScreen.toggle()
     }
     
     func deleteCourse(courseId: Int) {
         withAnimation {
-            self.courses = self.courses.filter{$0.id != courseId}
+            courses = removeCourse(courseId: courseId, coursesArray: courses)
         }
     }
 }

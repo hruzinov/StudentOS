@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28AF077E896AA79AB8DF02E7 /* ReferenceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF08CBB0FD719F4A2DDBF0 /* ReferenceData.swift */; };
 		28AF0A13C09A194A9AF9ADE8 /* View+DragGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF0E994FEF0495AA036F15 /* View+DragGesture.swift */; };
 		492DE68A297134580032DAA9 /* StudentOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492DE689297134580032DAA9 /* StudentOSTests.swift */; };
 		49502BDF296C0E57000551B0 /* CalendarFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49502BDE296C0E57000551B0 /* CalendarFunctions.swift */; };
@@ -22,7 +23,7 @@
 		496899B129360BEF0012B6D7 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496899A529360BEE0012B6D7 /* ScheduleView.swift */; };
 		496899B229360BEF0012B6D7 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496899A629360BEE0012B6D7 /* SidebarView.swift */; };
 		496899B329360BEF0012B6D7 /* Launch Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496899A729360BEE0012B6D7 /* Launch Screen.swift */; };
-		49DEE7552966D6DA00759968 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE7542966D6DA00759968 /* AddCourseView.swift */; };
+		49DEE7552966D6DA00759968 /* ChangeCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DEE7542966D6DA00759968 /* ChangeCourseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28AF08CBB0FD719F4A2DDBF0 /* ReferenceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceData.swift; sourceTree = "<group>"; };
 		28AF0E994FEF0495AA036F15 /* View+DragGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+DragGesture.swift"; sourceTree = "<group>"; };
 		492DE687297134580032DAA9 /* StudentOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudentOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		492DE689297134580032DAA9 /* StudentOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentOSTests.swift; sourceTree = "<group>"; };
@@ -54,7 +56,7 @@
 		496899A529360BEE0012B6D7 /* ScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		496899A629360BEE0012B6D7 /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		496899A729360BEE0012B6D7 /* Launch Screen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Launch Screen.swift"; sourceTree = "<group>"; };
-		49DEE7542966D6DA00759968 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
+		49DEE7542966D6DA00759968 /* ChangeCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCourseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				492DE689297134580032DAA9 /* StudentOSTests.swift */,
+				28AF08CBB0FD719F4A2DDBF0 /* ReferenceData.swift */,
 			);
 			path = StudentOSTests;
 			sourceTree = "<group>";
@@ -162,8 +165,8 @@
 		496899A129360BEE0012B6D7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				496899A229360BEE0012B6D7 /* Blocks */,
-				49DEE7542966D6DA00759968 /* AddCourseView.swift */,
+				496899A229360BEE0012B6D7 /* SubViews */,
+				49DEE7542966D6DA00759968 /* ChangeCourseView.swift */,
 				496899A429360BEE0012B6D7 /* CoursesView.swift */,
 				496899A729360BEE0012B6D7 /* Launch Screen.swift */,
 				496899A529360BEE0012B6D7 /* ScheduleView.swift */,
@@ -172,12 +175,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		496899A229360BEE0012B6D7 /* Blocks */ = {
+		496899A229360BEE0012B6D7 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
 				496899A329360BEE0012B6D7 /* CourseInfoBlockView.swift */,
 			);
-			path = Blocks;
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				492DE68A297134580032DAA9 /* StudentOSTests.swift in Sources */,
+				28AF077E896AA79AB8DF02E7 /* ReferenceData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496899AE29360BEF0012B6D7 /* StudentOSApp.swift in Sources */,
-				49DEE7552966D6DA00759968 /* AddCourseView.swift in Sources */,
+				49DEE7552966D6DA00759968 /* ChangeCourseView.swift in Sources */,
 				496899AC29360BEF0012B6D7 /* Course.swift in Sources */,
 				496899AD29360BEF0012B6D7 /* Theme.swift in Sources */,
 				496899B329360BEF0012B6D7 /* Launch Screen.swift in Sources */,
@@ -309,6 +313,7 @@
 /* Begin PBXTargetDependency section */
 		492DE68C297134580032DAA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 4968997729360ACA0012B6D7 /* StudentOS */;
 			targetProxy = 492DE68B297134580032DAA9 /* PBXContainerItemProxy */;
 		};
@@ -324,10 +329,14 @@
 				DEVELOPMENT_TEAM = G4PV26QJD2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 16.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruzinov.StudentOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -348,6 +357,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gruzinov.StudentOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

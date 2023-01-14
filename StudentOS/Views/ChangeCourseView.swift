@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct AddCourseView: View {
+struct ChangeCourseView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var courseTitle: String = ""
     @State var courseProfessor: String = ""
     @State var addButtonDisabled = true
     @State var editIdIndex: Int?
     @Binding var courses: [Course]
-    @Binding var editId: Int?
-    var editMode: EditModeTypes
+    @Binding var courseEditId: Int?
+    var changeMode: ChangeModeTypes
 
     var body: some View {
         List {
@@ -46,49 +46,20 @@ struct AddCourseView: View {
                     Divider()
                     Spacer()
                     Button("Save") {
-                        courses = saveCourse(editMode: editMode, editIdIndex: editIdIndex, courses: courses, courseTitle: courseTitle, courseProfessor: courseProfessor)
+                        courses = saveCourse(editMode: changeMode, editIdIndex: editIdIndex, courses: courses, courseTitle: courseTitle, courseProfessor: courseProfessor)
                         mode.wrappedValue.dismiss()
                     }.disabled(addButtonDisabled)
                     Spacer()
                 }
             }
         }.onAppear {
-            if editMode == .edit, let editId = editId {
-                for (index, course) in courses.enumerated() {
-                    if editId == course.id {
-                        editIdIndex = index
-                        courseTitle = courses[index].title
-                        courseProfessor = courses[index].professor
-                    }
+            if changeMode == .edit, let editId = courseEditId {
+                editIdIndex = getCourseIndex(courses: courses, id: editId)
+                if let editIdIndex {
+                    courseTitle = courses[editIdIndex].title
+                    courseProfessor = courses[editIdIndex].professor
                 }
             }
         }
     }
-}
-
-private func saveCourse(editMode: EditModeTypes, editIdIndex: Int?, courses: [Course], courseTitle: String, courseProfessor: String) -> [Course] {
-    var courses = courses
-    var saveCourseId: Int
-    switch editMode {
-    case .create:
-        saveCourseId = 0
-        while true {
-            saveCourseId += 1
-            var courseIdMatch = false
-            for course in courses {
-                if saveCourseId == course.id { courseIdMatch = true }
-            }
-            if !courseIdMatch { break }
-        }
-
-        let newCourse = Course(id: saveCourseId, title: courseTitle, professor: courseProfessor)
-        courses.append(newCourse)
-
-    case .edit:
-        if let editIdIndex = editIdIndex {
-            courses[editIdIndex].title = courseTitle
-            courses[editIdIndex].professor = courseProfessor
-        }
-    }
-    return courses
 }
