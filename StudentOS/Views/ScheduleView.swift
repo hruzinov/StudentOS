@@ -49,7 +49,7 @@ struct ScheduleView: View {
                     .navigationBarItems(leading: Button(action: {
                         mode.wrappedValue.dismiss()
                     }) {
-                        Image(systemName: "line.3.horizontal")
+                        Image(systemName: "line.horizontal.3")
                     })
                     .onBackSwipe {
                         mode.wrappedValue.dismiss()
@@ -62,12 +62,4 @@ struct ScheduleView: View {
                     }
         }
     }
-}
-
-private func sortCourses(courses: [Course]) -> Dictionary<Int, Course>? {
-    var returnCourses: Dictionary<Int, Course> = [:]
-    for course in courses {
-        returnCourses[course.id] = course
-    }
-    return returnCourses
 }

@@ -1,14 +1,10 @@
-//
-//  Created by Evhen Gruzinov on 23.11.2022.
-//
-
 import Foundation
 
 class TestData {
     
     let courses: [Course] = [
         Course(id: 1, title: "Rocket Science", professor: "Sergei Korolev"),
-        Course(id: 2, title: "Ukranian", professor: "Taras Shevchenko")
+        Course(id: 2, title: "Ukrainian", professor: "Taras Shevchenko")
     ]
     
     func getSemester() -> Semester {

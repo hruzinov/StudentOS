@@ -23,19 +23,19 @@ struct CourseInfoBlockView: View {
             Spacer()
             Menu {
                 Button {
-                    self.editFunction(course.id)
+                    editFunction(course.id)
                 } label: {
-                    Label("Edit", systemImage: "trash")
+                    Label("Edit", systemImage: "pencil")
                 }
 
                 Menu {
                     if #available(iOS 15.0, macOS 12.0, *) {
                         Button("Confirm", role: .destructive) {
-                            self.deleteFunction(course.id)
+                            deleteFunction(course.id)
                         }
                     } else {
                         Button("Confirm") {
-                            self.deleteFunction(course.id)
+                            deleteFunction(course.id)
                         }
                     }
                 } label: {
@@ -54,10 +54,3 @@ struct CourseInfoBlockView: View {
         )
     }
 }
-
-//struct CourseInfoBlockView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CourseInfoBlockView(deleteFunction: {_ in }, course: TestData().courses[0])
-//            .previewLayout(.fixed(width: 400, height: 400))
-//    }
-//}

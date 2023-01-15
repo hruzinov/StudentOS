@@ -1,0 +1,34 @@
+name: Xcode iOS Tests
+
+on:  
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+      
+jobs:
+  ios-tests-macos12-ios16:
+    runs-on: macos-12
+    name: Test iOS (16.2)
+    steps:
+    - uses: actions/checkout@v1
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_14.2.app && /usr/bin/xcodebuild -version
+    - name: Build
+      run: xcodebuild -project StudentOS.xcodeproj -scheme StudentOS -configuration Release -destination 'platform=iOS Simulator,name=iPhone 12,OS=16.2' | xcpretty && exit ${PIPESTATUS[0]}
+    - name: Tests
+      run: xcodebuild -project StudentOS.xcodeproj -scheme StudentOS -destination 'platform=iOS Simulator,name=iPhone 12,OS=16.2' test | xcpretty && exit ${PIPESTATUS[0]}
+
+  ios-tests-macos12-ios15:
+    runs-on: macos-12
+    name: Test iOS (15.5)
+    steps:
+    - uses: actions/checkout@v1
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_13.4.1.app && /usr/bin/xcodebuild -version
+    - name: Build
+      run: xcodebuild -project StudentOS.xcodeproj -scheme StudentOS -configuration Release -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.5' | xcpretty && exit ${PIPESTATUS[0]}
+    - name: Tests
+      run: xcodebuild -project StudentOS.xcodeproj -scheme StudentOS -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.5' test | xcpretty && exit ${PIPESTATUS[0]}

@@ -51,5 +51,4 @@ struct Semester {
     var endDate: Date
     var name: String
     var scheduleItems: [ScheduleItem]
-    
 }
