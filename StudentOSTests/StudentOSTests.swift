@@ -48,21 +48,21 @@ final class StudentOSTests: XCTestCase {
 
     func testNewCourseCreationEditingEndDeletion() throws {
         // Testing of new course creation
-        guard let testCourses = courses, let testCourseTitle, let testCourseProfessor else {
+        guard let testCourses = courses, let testCourseTitle = testCourseTitle, let testCourseProfessor = testCourseProfessor else {
             fatalError("Test data for a new course can't be fetched")
         }
         courses = saveCourse(editMode: .create, editIdIndex: nil, courses: testCourses, courseTitle: testCourseTitle, courseProfessor: testCourseProfessor)
         XCTAssertEqual(referenceNewCourse, courses?[0], "Course not created or created wrongly")
 
         // Getting course index in array for editing
-        guard let testCourseId, let indexingCourses = courses else {
+        guard let testCourseId = testCourseId, let indexingCourses = courses else {
             fatalError("Test data for getting course index can't be fetched")
         }
         testCourseIndex = getCourseIndex(courses: indexingCourses, id: testCourseId)
         XCTAssertEqual(testCourseIndex, 0, "Failure in getting course array index")
 
         // Testing of this course editing
-        guard let editedCourseTitle, let editedCourseProfessor, let editingCourses = courses else {
+        guard let editedCourseTitle = editedCourseTitle, let editedCourseProfessor = editedCourseProfessor, let editingCourses = courses else {
             fatalError("Test data for a course editing can't be fetched")
         }
         courses = saveCourse(editMode: .edit, editIdIndex: testCourseIndex, courses: editingCourses, courseTitle: editedCourseTitle, courseProfessor: editedCourseProfessor)

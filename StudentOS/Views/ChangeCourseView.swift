@@ -55,7 +55,7 @@ struct ChangeCourseView: View {
         }.onAppear {
             if changeMode == .edit, let editId = courseEditId {
                 editIdIndex = getCourseIndex(courses: courses, id: editId)
-                if let editIdIndex {
+                if let editIdIndex = editIdIndex {
                     courseTitle = courses[editIdIndex].title
                     courseProfessor = courses[editIdIndex].professor
                 }
