@@ -18,9 +18,13 @@ func getCourseIndex(courses: [Course], id: Int) -> Int? {
     return nil
 }
 
-func saveCourse(editMode: ChangeModeTypes, editIdIndex: Int?, courses: [Course], courseTitle: String, courseProfessor: String) -> [Course] {
+func saveCourse(editMode: ChangeModeTypes, editIdIndex: Int?, courses: [Course], courseTitle rawCourseTitle: String, courseProfessor rawCourseProfessor: String) -> [Course] {
     var courses = courses
     var saveCourseId: Int
+    
+    let courseTitle = rawCourseTitle.trimmingCharacters(in: .whitespaces)
+    let courseProfessor = rawCourseProfessor.trimmingCharacters(in: .whitespaces)
+    
     switch editMode {
     case .create:
         saveCourseId = 0

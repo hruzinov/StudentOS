@@ -35,7 +35,7 @@ struct CoursesView: View {
                         showAddCourseScreen.toggle()
                     }) {
                         Image(systemName: "plus")
-                    }
+                    }.font(.title2)
                     #endif
                 }.padding()
             }.padding(.top)

@@ -9,7 +9,7 @@ struct ChangeCourseView: View {
     @Binding var courses: [Course]
     @Binding var courseEditId: Int?
     var changeMode: ChangeModeTypes
-
+    
     var body: some View {
         List {
             Section(header: Text("Course details")) {

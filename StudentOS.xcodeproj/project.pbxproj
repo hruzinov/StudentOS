@@ -123,12 +123,12 @@
 		4968999529360BEE0012B6D7 /* StudentOS */ = {
 			isa = PBXGroup;
 			children = (
-				496899A029360BEE0012B6D7 /* StudentOSApp.swift */,
+				28AF0FB526769A0045F3A65C /* Extentions */,
 				49502BDD296C0E31000551B0 /* Functions */,
 				4968999C29360BEE0012B6D7 /* Models */,
 				4968999629360BEE0012B6D7 /* Other */,
+				496899A029360BEE0012B6D7 /* StudentOSApp.swift */,
 				496899A129360BEE0012B6D7 /* Views */,
-				28AF0FB526769A0045F3A65C /* Extentions */,
 			);
 			path = StudentOS;
 			sourceTree = "<group>";
